@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "ejb-module/src/main/java",
+        "backend-module/src/main/java",
+        "backend-module/demo/src/main/java/com/example/demo"
+    ]
+}

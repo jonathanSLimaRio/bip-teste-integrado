@@ -1,0 +1,43 @@
+.page {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: .5rem;
+    }
+
+    .actions {
+        display: flex;
+        gap: .5rem;
+    }
+}
+
+.btn {
+    padding: .5rem .75rem;
+    border: none;
+    cursor: pointer;
+
+    &--primary {
+        background: #2d6cdf;
+        color: #fff;
+        border-radius: .25rem;
+    }
+}
+
+.transfer {
+    display: grid;
+    gap: .5rem;
+    max-width: 480px;
+}

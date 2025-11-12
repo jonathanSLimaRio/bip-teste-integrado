@@ -153,6 +153,50 @@ curl -X POST http://localhost:8080/api/beneficios/transfer \
   -d '{"fromId":1,"toId":3,"amount":100.00}'
 ```
 
+###  2.1) Testes do Backend
+
+Estrutura dos testes
+
+Coloque os arquivos de teste em:
+backend-module/demo/src/test/java/com/example/demo/service/
+
+Ex.: backend-module/demo/src/test/java/com/example/demo/service/BeneficioServiceTest.java
+
+Dependências (Gradle)
+No backend-module/demo/build.gradle, garanta:
+
+dependencies {
+  // ...
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+
+Como rodar
+
+Dentro de backend-module/demo:
+
+./gradlew clean test
+
+
+Rodar apenas o teste de service:
+
+./gradlew test --tests "com.example.demo.service.BeneficioServiceTest"
+
+
+Abrir o relatório:
+
+open build/reports/tests/test/index.html
+
+🩺 Troubleshooting (Testes)
+
+“package org.junit.jupiter.api does not exist”
+Você provavelmente colocou o teste em src/main/java.
+Mova para src/test/java e rode ./gradlew clean test novamente.
+
 ---
 
 ### 3) Rodar o Frontend (Angular)
@@ -196,6 +240,44 @@ ng serve --open --proxy-config proxy.conf.json
 
 Acesse: `http://localhost:4200`
 Rota principal: `/beneficios`
+
+### 3.1) Testes do Frontend
+
+Estrutura dos testes
+
+Os testes ficam junto aos componentes, em arquivos *.spec.ts.
+
+Exemplo:
+
+frontend/src/app/features/beneficios/beneficios-list.component.spec.ts
+frontend/src/app/core/services/beneficio.service.spec.ts
+
+
+Como rodar os testes
+
+Na pasta frontend:
+
+npm run test
+
+
+Isso executa o Jest com o preset jest-preset-angular configurado em jest.config.cjs.
+
+Outros comandos úteis
+
+npm run test:watch   # modo contínuo (útil para desenvolvimento)
+npm run test:cov     # executa e gera relatório de cobertura
+
+
+Relatórios
+
+O Jest mostra o resultado no terminal.
+Se quiser cobertura em HTML, abra:
+
+frontend/coverage/lcov-report/index.html
+
+
+✅ Onde adicionar:
+Logo após o bloco atual de “3) Rodar o Frontend (Angular)”, antes da seção “🔧 Notas de implementação”.
 
 ---
 
@@ -272,7 +354,3 @@ POST   /api/beneficios/transfer   { fromId, toId, amount }
 ## 📜 Licença
 
 Uso público para o desafio técnico.
-
----
-
-Se quiser, eu já mando também um **patch** para `BeneficioFormComponent` com `isSaving` e UX de envio/desabilitar campos. Quer que eu inclua isso no README ou mando o diff aqui?

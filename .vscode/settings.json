@@ -4,5 +4,6 @@
         "backend-module/src/main/java",
         "backend-module/demo/src/main/java/com/example/demo"
     ],
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

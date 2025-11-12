@@ -27,9 +27,14 @@ dependencies {
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 }
 
-tasks.named('test') { useJUnitPlatform() }
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
 
 // Se quiser manter o bloco só para referência (não será usado agora):
 flyway {
